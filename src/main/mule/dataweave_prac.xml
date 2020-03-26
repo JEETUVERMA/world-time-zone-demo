@@ -15,5 +15,6 @@ http://www.mulesoft.org/schema/mule/ee/core http://www.mulesoft.org/schema/mule/
 		<http:listener doc:name="Listener" doc:id="8b4c4301-ac7d-4015-b7d1-640778196dd0" path="/" config-ref="HTTP_Listener_config"/>
 		<http:request method="GET" doc:name="Request" doc:id="7995747e-e117-433c-ab2e-69de544f3f85" config-ref="HTTP_Request_configuration" path="/v1/employees">
 		</http:request>
+		<logger level="INFO" doc:name="Logger" doc:id="f965a025-102c-4415-a160-2142c777fe2a" message="#[attributes.statusCode]"/>
 	</flow>
 </mule>
