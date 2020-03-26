@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mule xmlns:ee="http://www.mulesoft.org/schema/mule/ee/core" xmlns:http="http://www.mulesoft.org/schema/mule/http"
+	xmlns="http://www.mulesoft.org/schema/mule/core"
+	xmlns:doc="http://www.mulesoft.org/schema/mule/documentation" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd
+http://www.mulesoft.org/schema/mule/ee/core http://www.mulesoft.org/schema/mule/ee/core/current/mule-ee.xsd">
+	<http:listener-config name="HTTP_Listener_config" doc:name="HTTP Listener config" doc:id="506c54b1-6b57-42ed-9a6c-20188edb5c06" basePath="/restapi" >
+		<http:listener-connection host="0.0.0.0" port="8081" />
+	</http:listener-config>
+	<http:request-config name="HTTP_Request_configuration" doc:name="HTTP Request configuration" doc:id="a1f13c1f-7c9a-4793-abe5-5f009e528866" basePath="/api" >
+		<http:request-connection host="dummy.restapiexample.com" />
+	</http:request-config>
+	<flow name="dataweave_pracFlow" doc:id="ff71a44a-e029-4486-9ff0-7b787d4c0367" >
+		<http:listener doc:name="Listener" doc:id="8b4c4301-ac7d-4015-b7d1-640778196dd0" path="/" config-ref="HTTP_Listener_config"/>
+		<http:request method="GET" doc:name="Request" doc:id="7995747e-e117-433c-ab2e-69de544f3f85" config-ref="HTTP_Request_configuration" path="/v1/employees">
+		</http:request>
+	</flow>
+</mule>
